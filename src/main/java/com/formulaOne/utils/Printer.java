@@ -10,7 +10,7 @@ import com.formulaOne.objects.Lap;
 public class Printer {
 	private final static String LINE_SEPARATOR = System.lineSeparator();
 
-	public String print(List<Lap> laps, int numberOfWinners) {
+	public String getStringForPrinting(List<Lap> laps, int numberOfWinners) {
 		StringBuilder output = new StringBuilder();
 		int maxRacerLength;
 		int maxTeamLength;

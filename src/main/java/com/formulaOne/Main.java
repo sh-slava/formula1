@@ -17,7 +17,7 @@ public class Main {
 
       Result result = new Result(reader, parser);
 
-      System.out.println(printer.print(result.findResultLaps(startName, endName, abbreviations), 15));
+      System.out.println(printer.getStringForPrinting(result.findResultLaps(startName, endName, abbreviations), 15));
 
 	}
 

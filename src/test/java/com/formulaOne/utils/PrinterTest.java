@@ -83,7 +83,7 @@ class PrinterTest {
 	}
 
 	@Test
-	void print_shouldPrintCorrectly() {
+	void getStringForPrinting_shouldPrintCorrectly() {
 		String expected = "1. Sebastian Vettel   | FERRARI                   | 01:04.415" + LINE_SEPARATOR
 				+ "2. Daniel Ricciardo   | RED BULL RACING TAG HEUER | 01:12.013" + LINE_SEPARATOR
 				+ "3. Valtteri Bottas    | MERCEDES                  | 01:12.434" + LINE_SEPARATOR
@@ -111,11 +111,11 @@ class PrinterTest {
 			Lap lap = new Lap(racers.get(i), startTime.get(i), endTime.get(i), duration);
 			laps.add(lap);
 		}
-		assertEquals(expected, printer.print(laps, 15));
+		assertEquals(expected, printer.getStringForPrinting(laps, 15));
 	}
 
 	@Test
-	void print_shouldPrintLine_whenDifferentNumberOfWinners() {
+	void getStringForPrinting_shouldPrintLine_whenDifferentNumberOfWinners() {
 		String expected = "1. Sebastian Vettel   | FERRARI                   | 01:04.415" + LINE_SEPARATOR
 				+ "2. Daniel Ricciardo   | RED BULL RACING TAG HEUER | 01:12.013" + LINE_SEPARATOR
 				+ "3. Valtteri Bottas    | MERCEDES                  | 01:12.434" + LINE_SEPARATOR
@@ -143,11 +143,11 @@ class PrinterTest {
 			Lap lap = new Lap(racers.get(i), startTime.get(i), endTime.get(i), duration);
 			laps.add(lap);
 		}
-		assertEquals(expected, printer.print(laps, 7));
+		assertEquals(expected, printer.getStringForPrinting(laps, 7));
 	}
 
 	@Test
-	void print_shouldPrintLine_whenOneWinner() {
+	void getStringForPrinting_shouldPrintLine_whenOneWinner() {
 		String expected = "1. Daniel Ricciardo  | RED BULL RACING TAG HEUER | 01:12.013" + LINE_SEPARATOR
 				+ "------------------------------------------------------------" + LINE_SEPARATOR
 				+ "2. Lewis Hamilton    | MERCEDES                  | 01:12.460" + LINE_SEPARATOR
@@ -166,11 +166,11 @@ class PrinterTest {
 			Lap lap = new Lap(racers.get(i), startTime.get(i), endTime.get(i), duration);
 			laps.add(lap);
 		}
-		assertEquals(expected, printer.print(laps, 1));
+		assertEquals(expected, printer.getStringForPrinting(laps, 1));
 	}
 
 	@Test
-	void print_shouldThrowIllegalArgumentException() {
+	void getStringForPrinting_shouldThrowIllegalArgumentException() {
 		List<Lap> emptyLaps = new ArrayList<>();
 		List<Lap> laps = new ArrayList<>();
 
@@ -180,9 +180,9 @@ class PrinterTest {
 			laps.add(lap);
 		}
 		assertAll(
-				() -> assertThrows(IllegalArgumentException.class, () -> printer.print(laps, 0)),
-				() -> assertThrows(IllegalArgumentException.class, () -> printer.print(laps, -1)),
-				() -> assertThrows(IllegalArgumentException.class, () -> printer.print(emptyLaps, 2)),
-				() -> assertThrows(IllegalArgumentException.class, () -> printer.print(null, 2)));
+				() -> assertThrows(IllegalArgumentException.class, () -> printer.getStringForPrinting(laps, 0)),
+				() -> assertThrows(IllegalArgumentException.class, () -> printer.getStringForPrinting(laps, -1)),
+				() -> assertThrows(IllegalArgumentException.class, () -> printer.getStringForPrinting(emptyLaps, 2)),
+				() -> assertThrows(IllegalArgumentException.class, () -> printer.getStringForPrinting(null, 2)));
 	}
 }
