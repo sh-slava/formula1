@@ -11,9 +11,13 @@ public class Parser {
 		verifyNotEmpty(racerInfo);
 		if (!racerInfo.matches(ValidationPatternConstants.RACER_PATTERN)) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_FORMAT);
-		}
+		}	
 		String[] param = racerInfo.split("_");
-		return new Racer(param[0], param[1], param[2]);
+		String abbreviation = param[0];
+		String name = param[1];
+		String team = param[2];
+		
+		return new Racer(abbreviation, name, team);
 	}
 
 	public LocalDateTime parsTime(String timeString) {
