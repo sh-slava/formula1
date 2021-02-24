@@ -58,7 +58,7 @@ public class Printer {
 
 	private String durationTime(Lap lap) {
 		LocalTime time = LocalTime.ofNanoOfDay(Duration.between(lap.getStart(), lap.getFinish()).toNanos());
-		return time.format(FormatterConstants.DURATION_TIME_PATTERN);
+		return time.format(FormatterConstants.DURATION_TIME_FORMATTER);
 	}
 
 	public static String buildString(int numberOfSymbols, String symbol) {

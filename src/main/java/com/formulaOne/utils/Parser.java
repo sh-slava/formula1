@@ -23,7 +23,7 @@ public class Parser {
 		}
 
 		try {
-			return LocalDateTime.parse(timeString, FormatterConstants.DATA_TIME_PATTERN);
+			return LocalDateTime.parse(timeString, FormatterConstants.DATA_TIME_FORMATTER);
 		} catch (DateTimeParseException e) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_DATA_ARGUMENT);
 		}
