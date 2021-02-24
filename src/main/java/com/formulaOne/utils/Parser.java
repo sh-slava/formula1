@@ -8,9 +8,7 @@ import com.formulaOne.objects.Racer;
 
 public class Parser {
 	public Racer parsRacer(String racerInfo) {
-		if (racerInfo == null || racerInfo.isEmpty()) {
-			throw new IllegalArgumentException(ExceptionsConstants.EMPTY_ARGUMENT);
-		}
+		verifyNotEmpty(racerInfo);
 		if (!racerInfo.matches(ValidationPatternConstants.RACER_PATTERN)) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_FORMAT);
 		}
@@ -19,9 +17,7 @@ public class Parser {
 	}
 
 	public LocalDateTime parsTime(String timeString) {
-		if (timeString == null || timeString.isEmpty()) {
-			throw new IllegalArgumentException(ExceptionsConstants.EMPTY_ARGUMENT);
-		}
+		verifyNotEmpty(timeString);
 		if (!timeString.matches(ValidationPatternConstants.TIME_PATTERN)) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_FORMAT);
 		}
@@ -30,6 +26,12 @@ public class Parser {
 			return LocalDateTime.parse(timeString, FormatterConstants.DATA_TIME_PATTERN);
 		} catch (DateTimeParseException e) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_DATA_ARGUMENT);
+		}
+	}
+
+	private void verifyNotEmpty(String input) {
+		if (input == null || input.isEmpty()) {
+			throw new IllegalArgumentException(ExceptionsConstants.EMPTY_ARGUMENT);
 		}
 	}
 }
