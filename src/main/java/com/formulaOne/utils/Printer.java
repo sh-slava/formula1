@@ -2,7 +2,7 @@ package com.formulaOne.utils;
 
 import java.time.*;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import com.formulaOne.constants.*;
 import com.formulaOne.objects.*;
@@ -27,16 +27,11 @@ public class Printer {
 		maxRacerLength = laps.stream().mapToInt(lap -> lap.getRacer().getName().length()).max().getAsInt()
 				+ numbersLength;
 		maxTeamLength = laps.stream().mapToInt(lap -> lap.getRacer().getTeam().length()).max().getAsInt();
-
-		laps.stream().sorted().forEach(new Consumer<>() {
-			int index = 0;
-
-			@Override
-			public void accept(Lap lap) {
-				index++;
-				output.append(buildResult(lap, maxRacerLength, maxTeamLength, index, numberOfWinners));
-			}
-		});
+		
+		laps = laps.stream().sorted().collect(Collectors.toList());
+		for (int index = 0; index < laps.size(); index++) {
+			output.append(buildResult(laps.get(index), maxRacerLength, maxTeamLength, index+1, numberOfWinners));
+		}
 		return output.toString();
 	}
 
