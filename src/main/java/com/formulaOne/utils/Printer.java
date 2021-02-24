@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import com.formulaOne.constants.*;
-import com.formulaOne.objects.Lap;
+import com.formulaOne.objects.*;
 
 public class Printer {
 	private final static String LINE_SEPARATOR = System.lineSeparator();
@@ -42,11 +42,12 @@ public class Printer {
 
 	private String buildResult(Lap lap, int maxRacerLength, int maxTeamLength, int index, int numberOfWinners) {
 		StringBuilder output = new StringBuilder();
-		int spacesInName = maxRacerLength - lap.getRacer().getName().length() - String.valueOf(index).length();
-		int spacesInTeam = maxTeamLength - lap.getRacer().getTeam().length();
+		Racer racer = lap.getRacer();
+		int spacesInName = maxRacerLength - racer.getName().length() - String.valueOf(index).length();
+		int spacesInTeam = maxTeamLength - racer.getTeam().length();
 
-		String line = String.format("%d. %s%s | %s%s | %s", index, lap.getRacer().getName(),
-				buildString(spacesInName, " "), lap.getRacer().getTeam(), buildString(spacesInTeam, " "),
+		String line = String.format("%d. %s%s | %s%s | %s", index, racer.getName(),
+				buildString(spacesInName, " "), racer.getTeam(), buildString(spacesInTeam, " "),
 				durationTimeFormatter(lap.getDuration()));
 		output.append(line).append(LINE_SEPARATOR);
 
