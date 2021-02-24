@@ -17,7 +17,7 @@ public class Printer {
 		int numbersLength;
 
 		if (numberOfWinners <= 0) {
-			throw new IllegalArgumentException(ExceptionsConstants.INVALID_ARGUMENT);
+			throw new IllegalArgumentException(ExceptionsConstants.INVALID_NEGATIVE_NUMBER_ARGUMENT);
 		}
 		if (laps == null || laps.isEmpty()) {
 			throw new IllegalArgumentException(ExceptionsConstants.EMPTY_ARGUMENT);
