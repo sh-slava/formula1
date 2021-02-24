@@ -25,14 +25,14 @@ public class Result {
 			List<String> startTimeList = reader.readFile(startTimeFileName);
 			List<String> abbreviations = reader.readFile(abbreviationFileName);
 
-			return findRacers(abbreviations).stream().map(racer -> buildLapByRacer(racer, startTimeList, endTimeList))
+			return getRacers(abbreviations).stream().map(racer -> buildLapByRacer(racer, startTimeList, endTimeList))
 					.collect(Collectors.toList());
 		} catch (IOException e) {
 			throw new FileNotFoundException(e.getMessage());
 		}
 	}
 
-	private List<Racer> findRacers(List<String> abbreviations) {
+	private List<Racer> getRacers(List<String> abbreviations) {
 		return abbreviations.stream().map(parser::parseRacer).collect(Collectors.toList());
 	}
 
