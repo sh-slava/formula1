@@ -28,7 +28,7 @@ public class Printer {
 				+ numbersLength;
 		maxTeamLength = laps.stream().mapToInt(lap -> lap.getRacer().getTeam().length()).max().getAsInt();
 
-		laps.stream().sorted().forEachOrdered(new Consumer<>() {
+		laps.stream().sorted().forEach(new Consumer<>() {
 			int index = 0;
 
 			@Override
