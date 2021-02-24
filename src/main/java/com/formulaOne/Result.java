@@ -40,7 +40,7 @@ public class Result {
 		LocalDateTime start = findTimeByRacer(startTime, racer);
 		LocalDateTime end = findTimeByRacer(endTime, racer);
 		Duration bestLapTime = Duration.between(start, end);
-		return new Lap(racer, start, end, bestLapTime);
+		return new Lap(racer, bestLapTime);
 	}
 
 	private LocalDateTime findTimeByRacer(List<String> timeTable, Racer racer) {

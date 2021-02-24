@@ -47,7 +47,7 @@ public class Printer {
 
 		String line = String.format("%d. %s%s | %s%s | %s", index, lap.getRacer().getName(),
 				buildString(spacesInName, " "), lap.getRacer().getTeam(), buildString(spacesInTeam, " "),
-				durationTime(lap));
+				durationTimeFormatter(lap.getDuration()));
 		output.append(line).append(LINE_SEPARATOR);
 
 		if (index == numberOfWinners) {
@@ -56,8 +56,8 @@ public class Printer {
 		return output.toString();
 	}
 
-	private String durationTime(Lap lap) {
-		LocalTime time = LocalTime.ofNanoOfDay(Duration.between(lap.getStart(), lap.getFinish()).toNanos());
+	private String durationTimeFormatter(Duration duration) {
+		LocalTime time = LocalTime.ofNanoOfDay(duration.toNanos());		
 		return time.format(FormatterConstants.DURATION_TIME_FORMATTER);
 	}
 

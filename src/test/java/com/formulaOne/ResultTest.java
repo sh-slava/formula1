@@ -46,11 +46,11 @@ class ResultTest {
 				LocalDateTime.parse("2018-05-24_12:19:32.585", DATA_TIME_PATTERN));
 
 		List<Lap> expected = List.of(
-				new Lap(new Racer("DRR", "Daniel Ricciardo", "RED BULL RACING TAG HEUER"), timeList.get(0), timeList.get(1),
+				new Lap(new Racer("DRR", "Daniel Ricciardo", "RED BULL RACING TAG HEUER"),
 						Duration.between(timeList.get(0), timeList.get(1))),
-				new Lap(new Racer("SVF", "Sebastian Vettel", "FERRARI"), timeList.get(2), timeList.get(3),
+				new Lap(new Racer("SVF", "Sebastian Vettel", "FERRARI"),
 						Duration.between(timeList.get(2), timeList.get(3))),
-				new Lap(new Racer("LHM", "Lewis Hamilton", "MERCEDES"), timeList.get(4), timeList.get(5),
+				new Lap(new Racer("LHM", "Lewis Hamilton", "MERCEDES"),
 						Duration.between(timeList.get(4), timeList.get(5))));
 
 		when(readerMock.readFile(abbreviationsFileName)).thenReturn(racersList);

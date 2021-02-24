@@ -108,7 +108,7 @@ class PrinterTest {
 		List<Lap> laps = new ArrayList<>();
 		for (int i = 0; i < racers.size(); i++) {
 			Duration duration = Duration.between(startTime.get(i), endTime.get(i));
-			Lap lap = new Lap(racers.get(i), startTime.get(i), endTime.get(i), duration);
+			Lap lap = new Lap(racers.get(i), duration);
 			laps.add(lap);
 		}
 		assertEquals(expected, printer.getStringForPrinting(laps, 15));
@@ -140,7 +140,7 @@ class PrinterTest {
 		List<Lap> laps = new ArrayList<>();
 		for (int i = 0; i < racers.size(); i++) {
 			Duration duration = Duration.between(startTime.get(i), endTime.get(i));
-			Lap lap = new Lap(racers.get(i), startTime.get(i), endTime.get(i), duration);
+			Lap lap = new Lap(racers.get(i), duration);
 			laps.add(lap);
 		}
 		assertEquals(expected, printer.getStringForPrinting(laps, 7));
@@ -163,7 +163,7 @@ class PrinterTest {
 		List<Lap> laps = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			Duration duration = Duration.between(startTime.get(i), endTime.get(i));
-			Lap lap = new Lap(racers.get(i), startTime.get(i), endTime.get(i), duration);
+			Lap lap = new Lap(racers.get(i), duration);
 			laps.add(lap);
 		}
 		assertEquals(expected, printer.getStringForPrinting(laps, 1));
@@ -176,7 +176,7 @@ class PrinterTest {
 
 		for (int i = 0; i < 3; i++) {
 			Duration duration = Duration.between(startTime.get(i), endTime.get(i));
-			Lap lap = new Lap(racers.get(i), startTime.get(i), endTime.get(i), duration);
+			Lap lap = new Lap(racers.get(i), duration);
 			laps.add(lap);
 		}
 		assertAll(
