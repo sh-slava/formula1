@@ -62,12 +62,6 @@ public class Printer {
 	}
 
 	public static String buildString(int numberOfSymbols, String symbol) {
-		StringBuilder output = new StringBuilder();
-
-		for (int i = 0; i < numberOfSymbols; i++) {
-			output.append(symbol);
-		}
-		return output.toString();
+		return String.valueOf(symbol).repeat(numberOfSymbols);
 	}
-
 }
