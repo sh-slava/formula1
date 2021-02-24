@@ -57,17 +57,17 @@ class ResultTest {
 		when(readerMock.readFile(startTimeFileName)).thenReturn(startList);
 		when(readerMock.readFile(endTimeFileName)).thenReturn(endList);
 
-		when(parserMock.parsRacer(anyString())).thenReturn(expected.get(0).getRacer())
+		when(parserMock.parseRacer(anyString())).thenReturn(expected.get(0).getRacer())
 				.thenReturn(expected.get(1).getRacer()).thenReturn(expected.get(2).getRacer());
 
-		when(parserMock.parsTime(anyString())).thenReturn(timeList.get(0)).thenReturn(timeList.get(1))
+		when(parserMock.parseTime(anyString())).thenReturn(timeList.get(0)).thenReturn(timeList.get(1))
 				.thenReturn(timeList.get(2)).thenReturn(timeList.get(3)).thenReturn(timeList.get(4))
 				.thenReturn(timeList.get(5));
 
 		assertEquals(expected, result.findResultLaps(startTimeFileName, endTimeFileName, abbreviationsFileName));
 		verify(readerMock, times(3)).readFile(anyString());
-		verify(parserMock, times(3)).parsRacer(anyString());
-		verify(parserMock, times(6)).parsTime(anyString());
+		verify(parserMock, times(3)).parseRacer(anyString());
+		verify(parserMock, times(6)).parseTime(anyString());
 		verifyNoMoreInteractions(readerMock);
 		verifyNoMoreInteractions(parserMock);
 	}

@@ -24,14 +24,14 @@ class ParserTest {
 		@Test
 		void parsRacer_shouldThrowIllegalArgumentException_whenNullOrEmptyInput() {
 			assertAll(
-					() -> assertThrows(IllegalArgumentException.class, () -> parser.parsRacer(null)),
-					() -> assertThrows(IllegalArgumentException.class, () -> parser.parsRacer("")));
+					() -> assertThrows(IllegalArgumentException.class, () -> parser.parseRacer(null)),
+					() -> assertThrows(IllegalArgumentException.class, () -> parser.parseRacer("")));
 		}
 
 		@ParameterizedTest
 		@MethodSource("racersInfoProvider")
 		void parsRacer_shouldReturnRacer_whenValidFormatInput(String racerString, Object racerObject) {
-			assertEquals(racerObject, parser.parsRacer(racerString));
+			assertEquals(racerObject, parser.parseRacer(racerString));
 
 		}
 
@@ -47,7 +47,7 @@ class ParserTest {
 		@ParameterizedTest
 		@MethodSource("racersInvalidInfoProvider")
 		void parsRacer_shouldThrowIllegalArgumentException_whenInvalidFormat(String invalidRacerInfo) {
-			assertThrows(IllegalArgumentException.class, () -> parser.parsRacer(invalidRacerInfo));
+			assertThrows(IllegalArgumentException.class, () -> parser.parseRacer(invalidRacerInfo));
 
 		}
 
@@ -75,14 +75,14 @@ class ParserTest {
 		@Test
 		void parsTime_shouldThrowIllegalArgumentException_whenNullOrEmptyInput() {
 			assertAll(
-					() -> assertThrows(IllegalArgumentException.class, () -> parser.parsTime(null)),
-					() -> assertThrows(IllegalArgumentException.class, () -> parser.parsTime("")));
+					() -> assertThrows(IllegalArgumentException.class, () -> parser.parseTime(null)),
+					() -> assertThrows(IllegalArgumentException.class, () -> parser.parseTime("")));
 		}
 
 		@ParameterizedTest
 		@MethodSource("timeInfoProvider")
 		void parsRacer_shouldReturnRacer_whenValidFormatInput(String timeString, Object timeObject) {
-			assertEquals(timeObject, parser.parsTime(timeString));
+			assertEquals(timeObject, parser.parseTime(timeString));
 
 		}
 
@@ -98,7 +98,7 @@ class ParserTest {
 		@ParameterizedTest
 		@MethodSource("timeInvalidInfoProvider")
 		void parsRacer_shouldThrowIllegalArgumentException_whenInvalidFormat(String invalidTimeInfo) {
-			assertThrows(IllegalArgumentException.class, () -> parser.parsTime(invalidTimeInfo));
+			assertThrows(IllegalArgumentException.class, () -> parser.parseTime(invalidTimeInfo));
 		}
 
 		private List<String> timeInvalidInfoProvider() {
@@ -117,7 +117,7 @@ class ParserTest {
 		@ParameterizedTest
 		@MethodSource("incorrectDataTimeInfo")
 		void parsRacer_shouldThrowIllegalArgumentException_whenInvalidDataTimeInformation(String invalidDataTimeInfo) {
-			assertThrows(IllegalArgumentException.class, () -> parser.parsTime(invalidDataTimeInfo));
+			assertThrows(IllegalArgumentException.class, () -> parser.parseTime(invalidDataTimeInfo));
 		}
 
 		private List<String> incorrectDataTimeInfo() {

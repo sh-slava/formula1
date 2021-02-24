@@ -33,7 +33,7 @@ public class Result {
 	}
 
 	private List<Racer> findRacers(List<String> abbreviations) {
-		return abbreviations.stream().map(parser::parsRacer).collect(Collectors.toList());
+		return abbreviations.stream().map(parser::parseRacer).collect(Collectors.toList());
 	}
 
 	private Lap buildLapByRacer(Racer racer, List<String> startTime, List<String> endTime) {
@@ -44,7 +44,7 @@ public class Result {
 	}
 
 	private LocalDateTime findTimeByRacer(List<String> timeTable, Racer racer) {
-		return parser.parsTime(timeTable.stream().filter(string -> string.contains(racer.getAbbreviation())).findAny()
+		return parser.parseTime(timeTable.stream().filter(string -> string.contains(racer.getAbbreviation())).findAny()
 				.orElseThrow(NoSuchElementException::new).substring(3));
 	}
 }

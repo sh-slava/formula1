@@ -7,7 +7,7 @@ import com.formulaOne.constants.*;
 import com.formulaOne.objects.Racer;
 
 public class Parser {
-	public Racer parsRacer(String racerInfo) {
+	public Racer parseRacer(String racerInfo) {
 		verifyNotEmpty(racerInfo);
 		if (!racerInfo.matches(ValidationPatternConstants.RACER_PATTERN)) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_FORMAT);
@@ -20,7 +20,7 @@ public class Parser {
 		return new Racer(abbreviation, name, team);
 	}
 
-	public LocalDateTime parsTime(String timeString) {
+	public LocalDateTime parseTime(String timeString) {
 		verifyNotEmpty(timeString);
 		if (!timeString.matches(ValidationPatternConstants.TIME_PATTERN)) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_FORMAT);
