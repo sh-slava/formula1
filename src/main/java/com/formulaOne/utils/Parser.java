@@ -26,13 +26,10 @@ public class Parser {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_FORMAT);
 		}
 
-		LocalDateTime resultData;
 		try {
-			resultData = LocalDateTime.parse(timeString, FormatterConstants.DATA_TIME_PATTERN);
+			return LocalDateTime.parse(timeString, FormatterConstants.DATA_TIME_PATTERN);
 		} catch (DateTimeParseException e) {
 			throw new IllegalArgumentException(ExceptionsConstants.INVALID_DATA_ARGUMENT);
 		}
-		return resultData;
 	}
-
 }
