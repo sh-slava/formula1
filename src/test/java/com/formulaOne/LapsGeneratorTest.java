@@ -15,15 +15,15 @@ import com.formulaOne.objects.*;
 import com.formulaOne.utils.Parser;
 import com.formulaOne.utils.Reader;
 
-class ResultTest {
-	Result result = new Result(new Reader(), new Parser());
+class LapsGeneratorTest {
+	LapsGenerator result = new LapsGenerator(new Reader(), new Parser());
 	private static final DateTimeFormatter DATA_TIME_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss.SSS");
-
+	
 	@Test
-	void findResultLaps_ShouldReturnList() throws IOException {
+	void findResultLaps_ShouldReturnList_whenUsingMocks() throws IOException {
 		Reader readerMock = mock(Reader.class);
 		Parser parserMock = mock(Parser.class);
-		Result result = new Result(readerMock, parserMock);
+		LapsGenerator result = new LapsGenerator(readerMock, parserMock);
 
 		String abbreviationsFileName = "abbreviations.txt";
 		String startTimeFileName = "start.log";
