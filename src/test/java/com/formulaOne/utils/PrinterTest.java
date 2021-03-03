@@ -2,11 +2,13 @@ package com.formulaOne.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileNotFoundException;
 import java.time.*;
 import java.util.*;
 
 import org.junit.jupiter.api.*;
 
+import com.formulaOne.LapsGenerator;
 import com.formulaOne.constants.FormatterConstants;
 import com.formulaOne.objects.*;
 
@@ -82,6 +84,42 @@ class PrinterTest {
 				);
 	}
 
+	@Test
+	void getStringForPrinting_shouldPrintCorrectly_vhenReadFromFile() throws FileNotFoundException {
+		LapsGenerator lapsGenerator = new LapsGenerator(new Reader(), new Parser());
+		List<Lap> laps = lapsGenerator.findResultLaps(
+				"startTestFile.log"
+				, "endTestFile.log"
+				, "abbreviationsTestFile.txt");
+		
+		String actual = printer.getStringForPrinting(laps, 15);
+		String expected = 
+				  "1. Sebastian Vettel   | FERRARI                   | 01:04.415" + LINE_SEPARATOR
+				+ "2. Daniel Ricciardo   | RED BULL RACING TAG HEUER | 01:12.013" + LINE_SEPARATOR
+				+ "3. Valtteri Bottas    | MERCEDES                  | 01:12.434" + LINE_SEPARATOR
+				+ "4. Lewis Hamilton     | MERCEDES                  | 01:12.460" + LINE_SEPARATOR
+				+ "5. Stoffel Vandoorne  | MCLAREN RENAULT           | 01:12.463" + LINE_SEPARATOR
+				+ "6. Kimi Raikkonen     | FERRARI                   | 01:12.639" + LINE_SEPARATOR
+				+ "7. Fernando Alonso    | MCLAREN RENAULT           | 01:12.657" + LINE_SEPARATOR
+				+ "8. Sergey Sirotkin    | WILLIAMS MERCEDES         | 01:12.706" + LINE_SEPARATOR
+				+ "9. Charles Leclerc    | SAUBER FERRARI            | 01:12.829" + LINE_SEPARATOR
+				+ "10. Sergio Perez      | FORCE INDIA MERCEDES      | 01:12.848" + LINE_SEPARATOR
+				+ "11. Romain Grosjean   | HAAS FERRARI              | 01:12.930" + LINE_SEPARATOR
+				+ "12. Pierre Gasly      | SCUDERIA TORO ROSSO HONDA | 01:12.941" + LINE_SEPARATOR
+				+ "13. Carlos Sainz      | RENAULT                   | 01:12.950" + LINE_SEPARATOR
+				+ "14. Esteban Ocon      | FORCE INDIA MERCEDES      | 01:13.028" + LINE_SEPARATOR
+				+ "15. Nico Hulkenberg   | RENAULT                   | 01:13.065" + LINE_SEPARATOR
+				+ "-------------------------------------------------------------" + LINE_SEPARATOR
+				+ "16. Brendon Hartley   | SCUDERIA TORO ROSSO HONDA | 01:13.179" + LINE_SEPARATOR
+				+ "17. Marcus Ericsson   | SAUBER FERRARI            | 01:13.265" + LINE_SEPARATOR
+				+ "18. Lance Stroll      | WILLIAMS MERCEDES         | 01:13.323" + LINE_SEPARATOR
+				+ "19. Kevin Magnussen   | HAAS FERRARI              | 01:13.393" + LINE_SEPARATOR;
+		
+		assertEquals(expected, actual);
+
+		
+	}
+	
 	@Test
 	void getStringForPrinting_shouldPrintCorrectly() {
 		String expected = "1. Sebastian Vettel   | FERRARI                   | 01:04.415" + LINE_SEPARATOR

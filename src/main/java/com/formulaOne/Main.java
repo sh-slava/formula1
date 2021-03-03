@@ -15,7 +15,7 @@ public class Main {
       Reader reader = new Reader();
       Parser parser = new Parser();
 
-      Result result = new Result(reader, parser);
+      LapsGenerator result = new LapsGenerator(reader, parser);
 
       System.out.println(printer.getStringForPrinting(result.findResultLaps(startName, endName, abbreviations), 15));
 

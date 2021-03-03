@@ -9,11 +9,11 @@ import com.formulaOne.objects.*;
 import com.formulaOne.utils.Parser;
 import com.formulaOne.utils.Reader;
 
-public class Result {
+public class LapsGenerator {
 	private Reader reader;
 	private Parser parser;
 
-	public Result(Reader reader, Parser parser) {
+	public LapsGenerator(Reader reader, Parser parser) {
 		this.reader = reader;
 		this.parser = parser;
 	}
